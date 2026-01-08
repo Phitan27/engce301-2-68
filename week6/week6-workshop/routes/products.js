@@ -143,16 +143,29 @@ router.put('/:id', async (req, res) => {
         const id = parseInt(req.params.id);
         const { name, category, price, stock, description } = req.body;
 
-        // TODO: 1. หา index ของ product ที่ต้องการแก้ไข
+        // 1. หา index
+        const productIndex = products.findIndex(p => p.id === id);
 
+        // 2. ตรวจสอบ
+        if (productIndex === -1) {
+            return res.status(404).json({
+                success: false,
+                error: 'Product not found'
+            });
+        }
 
-        // TODO: 2. ตรวจสอบว่าเจอหรือไม่
+        // 3. อัปเดต
+        products[productIndex] = {
+            id,
+            name,
+            category,
+            price: parseFloat(price),
+            stock: parseInt(stock),
+            description: description || products[productIndex].description
+        };
 
-
-        // TODO: 3. อัปเดตข้อมูล
-
-
-        // TODO: 4. บันทึกลงไฟล์
+        // 4. บันทึก
+        await writeProducts(products);
 
 
         res.json({
@@ -173,7 +186,20 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         // TODO: เขียนโค้ดลบ product
+        const products = await readProducts();
+        const id = parseInt(req.params.id);
 
+        const productIndex = products.findIndex(p => p.id === id);
+
+        if (productIndex === -1) {
+            return res.status(404).json({
+                success: false,
+                error: 'Product not found'
+            });
+        }
+
+        products.splice(productIndex, 1);
+        await writeProducts(products);
 
 
 
