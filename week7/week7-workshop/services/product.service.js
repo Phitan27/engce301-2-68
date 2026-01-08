@@ -2,7 +2,7 @@
 // SERVICE LAYER - Products
 // ============================================
 
-const ProductDB = require('../database/products.db');
+const ProductDB = require('../database/products.db.js');
 
 class ProductService {
     // ===== GET ALL =====
