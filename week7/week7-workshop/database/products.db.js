@@ -23,7 +23,7 @@ class ProductDatabase {
                     productData.stock,
                     productData.description || ''
                 ],
-                function(err) {
+                function (err) {
                     if (err) {
                         reject(err);
                     } else {
@@ -63,10 +63,14 @@ class ProductDatabase {
     // ===== READ ONE =====
     // ⚠️ นักศึกษาเติมโค้ด 30%
     static findById(id) {
-        // TODO: เขียน SQL query ให้ JOIN กับ categories
         const sql = `
-            /* เติม SQL query ตรงนี้ */
-        `;
+        SELECT 
+            p.*,
+            c.name as category_name
+        FROM products p
+        LEFT JOIN categories c ON p.category_id = c.id
+        WHERE p.id = ?
+    `;
 
         return new Promise((resolve, reject) => {
             db.get(sql, [id], (err, row) => {
@@ -84,11 +88,35 @@ class ProductDatabase {
     static update(id, productData) {
         // TODO: เขียน SQL UPDATE query
         const sql = `
-            /* เติม SQL query ตรงนี้ */
+            UPDATE products
+        SET name = ?,
+            category_id = ?,
+            price = ?,
+            stock = ?,
+            description = ?
+        WHERE id = ?
         `;
 
         return new Promise((resolve, reject) => {
             // TODO: เติมโค้ด db.run
+            db.run(
+                sql,
+                [
+                    productData.name,
+                    productData.category_id,
+                    productData.price,
+                    productData.stock,
+                    productData.description,
+                    id
+                ],
+                function (err) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve({ changes: this.changes });
+                    }
+                }
+            );
         });
     }
 
@@ -96,9 +124,17 @@ class ProductDatabase {
     // ⚠️ นักศึกษาเติมโค้ดทั้งหมด
     static delete(id) {
         // TODO: เขียน SQL DELETE query
-        
-        
-        
+        const sql = 'DELETE FROM products WHERE id = ?';
+
+        return new Promise((resolve, reject) => {
+            db.run(sql, [id], function (err) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve({ changes: this.changes });
+                }
+            });
+        });
     }
 
     // ===== SEARCH =====
@@ -117,7 +153,13 @@ class ProductDatabase {
         return new Promise((resolve, reject) => {
             const searchTerm = `%${keyword}%`;
             // TODO: เติมโค้ด db.all
-            
+            db.all(sql, [searchTerm, searchTerm], (err, rows) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows);
+                }
+            });
         });
     }
 }
