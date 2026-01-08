@@ -94,18 +94,30 @@ router.post('/', async (req, res) => {
         const { name, category, price, stock, description } = req.body;
 
         // TODO: 1. Validate ข้อมูล (ตรวจสอบว่ามีครบหรือไม่)
-
-
+        if (!name || !category || price === undefined || stock === undefined) {
+            return res.status(400).json({
+                success: false,
+                error: 'Missing required fields'
+            });
+        }
         // TODO: 2. สร้าง id ใหม่ (หา max id + 1)
-
-
+        const maxId = products.length > 0
+            ? Math.max(...products.map(p => p.id))
+            : 0;
+        const newId = maxId + 1;
         // TODO: 3. สร้าง product object ใหม่
         const newProduct = {
-            // เติมโค้ดตรงนี้
+            id: newId,
+            name,
+            category,
+            price: parseFloat(price),
+            stock: parseInt(stock),
+            description: description || ''
         };
 
         // TODO: 4. เพิ่มเข้า array
-
+        products.push(newProduct);
+        await writeProducts(products);
 
         // TODO: 5. บันทึกลงไฟล์
 
