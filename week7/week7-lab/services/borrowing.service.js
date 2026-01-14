@@ -101,3 +101,4 @@ class BorrowingService {
         return overdueBorrowings;
     }
 }
+module.exports = BorrowingService;
