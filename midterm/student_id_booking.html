@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องประชุม</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background: #cebfbf;
+        }
+        
+        /* เพิ่ม CSS ของคุณที่นี่ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .search-section, .results-section {
+            background: rgb(230, 205, 205);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .booking-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏢 ระบบจองห้องประชุมออนไลน์</h1>
+        
+        <!-- ฟอร์มค้นหา -->
+        <section class="search-section">
+            <h2>ค้นหาห้องประชุม</h2>
+            <form id="searchForm">
+                <label for="building">อาคาร:</label>
+                <select id="building" name="building">
+                    <option value="">ทุกอาคาร</option>
+                    <option value="A">อาคาร A</option>
+                    <option value="B">อาคาร B</option>
+                </select>
+
+                <label for="floor">ชั้น:</label>
+                <select id="floor" name="floor">
+                    <option value="">ทุกชั้น</option>
+                    <option value="1">ชั้น 1</option>
+                    <option value="2">ชั้น 2</option>
+                    <option value="3">ชั้น 3</option>
+                </select>
+
+                <button type="button" onclick="searchRooms()">ค้นหา</button>
+            </form>
+        </section>
+        
+        <!-- ตารางแสดงผล -->
+        <section class="results-section">
+            <h2>ห้องประชุมที่ว่าง</h2>
+            <!-- เพิ่มตารางของคุณที่นี่ -->
+            <table id="roomsTable">
+                <thead>
+                    <tr>
+                        <th>ชื่อห้อง</th>
+                        <th>อาคาร</th>
+                        <th>ชั้น</th>
+                        <th>สิ่งอำนวยความสะดวก</th>
+                        <th>ดำเนินการ</th>
+                    </tr>
+                </thead>
+                <tbody id="roomsTableBody">
+                    <!-- ข้อมูลห้องประชุมจะถูกเพิ่มที่นี่ -->
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Modal/Form จอง -->
+        <div class="booking-modal">
+            <!-- เพิ่ม Modal ของคุณที่นี่ -->
+        </div>
+    </div>
+
+    <script>
+        // JavaScript ของคุณที่นี่
+        
+        // Mock Data ห้องประชุม
+        const rooms = [
+            {
+                id: 1,
+                name: "ห้อง A301",
+                building: "อาคาร A",
+                floor: 3,
+                capacity: 20,
+                facilities: ["โปรเจคเตอร์", "ไวท์บอร์ด", "ระบบเสียง"]
+            },
+            // เพิ่มข้อมูลห้องอื่นๆ
+        ];
+        
+        // ฟังก์ชันค้นหา
+        function searchRooms() {
+            // โค้ดของคุณ
+        }
+        
+        // ฟังก์ชัน Validation
+        function validateForm() {
+            // โค้ดของคุณ
+        }
+        
+        // ฟังก์ชันจอง
+        function bookRoom(roomId) {
+            // โค้ดของคุณ
+            
+        }
+    </script>
+</body>
+</html>
