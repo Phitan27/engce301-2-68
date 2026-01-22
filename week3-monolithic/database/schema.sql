@@ -13,8 +13,10 @@ CREATE TABLE tasks (
     description TEXT,
     status TEXT NOT NULL DEFAULT 'TODO',
     priority TEXT DEFAULT 'MEDIUM',
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    --created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    --updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    created_at TEXT DEFAULT (datetime('now', '+7 hours')),
+    updated_at TEXT DEFAULT (datetime('now', '+7 hours'))
 );
 
 -- Create index for faster queries on status
