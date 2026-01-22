@@ -6,6 +6,7 @@
 // ========================================
 
 // TODO 1.1: Declare global variables for state
+
 // Hint: You need to store all tasks and current filter
 /*
 let allTasks = [];
