@@ -1,7 +1,3 @@
-/**
- * Task Data Model
- * แทนข้อมูล task พร้อม validation
- */
 class Task {
     constructor(data = {}) {
         this.id = data.id || null;
