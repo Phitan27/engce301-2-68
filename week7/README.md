@@ -52,32 +52,32 @@ db.get('SELECT * FROM users WHERE id = ?', [id], callback);
 ---
 
 ## 🏗️ 4. Layered Architecture (การแบ่งเลเยอร์โค้ด)
-```
-เพื่อความสะอาด (Clean Code) และง่ายต่อการ Maintenance
 
-Router: รับ Request และกำหนดเส้นทาง URL
+### เพื่อความสะอาด (Clean Code) และง่ายต่อการ Maintenance
 
-Controller: จัดการ Request/Response (รับ Parameter และส่ง JSON กลับ)
+- **Router:** รับ Request และกำหนดเส้นทาง URL
 
-Service: เก็บ Business Logic (การคำนวณ, การ Validation เงื่อนไขต่างๆ)
+- **Controller:** จัดการ Request/Response (รับ Parameter และส่ง JSON กลับ)
 
-Database (Data Access): เขียนคำสั่ง SQL ติดต่อกับฐานข้อมูลโดยเฉพาะ
+- **Service:** เก็บ Business Logic (การคำนวณ, การ Validation เงื่อนไขต่างๆ)
 
-```
+- **Database** (Data Access): เขียนคำสั่ง SQL ติดต่อกับฐานข้อมูลโดยเฉพาะ
+
+
 ---
 
 ### 🔑 หัวข้อสำคัญสำหรับการสอบกลางภาค
 ---
-```
-JOIN Query: การดึงข้อมูลพร้อมกันจากหลายตาราง
 
-Database Transactions: การใช้ BEGIN, COMMIT, และ ROLLBACK เพื่อป้องกันข้อมูลผิดพลาด (ACID Properties)
+- **JOIN Query:** การดึงข้อมูลพร้อมกันจากหลายตาราง
 
-Authentication:
+- **Database Transactions:** การใช้ BEGIN, COMMIT, และ ROLLBACK เพื่อป้องกันข้อมูลผิดพลาด (ACID Properties)
 
-bcrypt: การ Hash รหัสผ่านก่อนเก็บลงฐานข้อมูล
+- **Authentication:**
 
-JWT (JSON Web Token): การใช้ Token เพื่อยืนยันตัวตนในระบบ Stateless
-```
+    - **bcrypt:** การ Hash รหัสผ่านก่อนเก็บลงฐานข้อมูล
+
+    - **JWT (JSON Web Token):** การใช้ Token เพื่อยืนยันตัวตนในระบบ Stateless
+
 ---
 ### 💡 Tip: สัปดาห์หน้าสอบกลางภาค อย่าลืมทบทวนการวาด UML Diagrams และการออกแบบ API Endpoints ให้แม่นยำครับ! 
